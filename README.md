@@ -1,4 +1,4 @@
-radio-rails
-===========
+Radio-DePaul-Back-End
+=====================
 
-New and improved rails back end
+Back-end administrative Ruby on Rails application for Radio DePaul, DePaul University's radio station.
