@@ -5,8 +5,8 @@ module Api
 	    @awards = Award.find(:all, order: 'year DESC')
 
 	    respond_to do |format|
-	      format.js  { render :json => @awards, :callback => params[:callback] }
-	      format.json  { render :json => @awards }
+	      format.js  { render :json => @awards, :callback => params[:callback], root: false }
+	      format.json  { render :json => @awards, root: false }
 	    end
 	  end
     end
