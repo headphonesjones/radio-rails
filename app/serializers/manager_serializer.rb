@@ -1,18 +1,29 @@
 class ManagerSerializer < ActiveModel::Serializer
 
-  attributes :id, :photo, :position, :office_hours, :email,
+  attributes :id, :photo, :position, :office_hours, :email, :facebook, :name, :twitter, :linkedin, :website
 
   attribute :phone_number, key: :phone
 
-  attribute :facebook_username, key: :facebook
 
-  attribute :twitter_username, key: :twitter
+  def facebook
+    object.person.facebook_username
+  end 
 
-  attribute :linkedin_username, key: :linkedin
+  def name
+    object.person.first_last_name
+  end
 
-  attribute :first_last_name, key: :name
+  def linkedin
+    object.person.first_last_name
+  end
 
-  attribute :website_url, key: :website
+  def twitter
+    object.person.twitter_username
+  end 
+
+  def website
+    object.person.website_url
+  end
 
   def photo
       object.person.avatar.square.medium.url
