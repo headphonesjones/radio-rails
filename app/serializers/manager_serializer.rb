@@ -1,6 +1,6 @@
 class ManagerSerializer < ActiveModel::Serializer
 
-  attributes :id, :photo, :position, :office_hours, :email, :name, :twitter,
+  attributes :id, :photo, :position, :office_hours, :email, :name, :twitter
 
   attribute :phone_number, key: :phone
 
