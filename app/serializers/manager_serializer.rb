@@ -12,7 +12,7 @@ class ManagerSerializer < ActiveModel::Serializer
 
   attribute :first_last_name, key: :name
 
-  attribute :website, key: :website_url
+  attribute :website_url, key: :website
 
   def photo
       object.person.avatar.square.medium.url
