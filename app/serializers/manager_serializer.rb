@@ -4,6 +4,9 @@ class ManagerSerializer < ActiveModel::Serializer
 
   attribute :phone_number, key: :phone
 
+  def id
+    object.person.id
+  end
 
   def facebook
     object.person.facebook_username
