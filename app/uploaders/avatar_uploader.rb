@@ -3,9 +3,9 @@ require 'carrierwave/processing/mime_types'
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
+  # include CarrierWave::RMagick
   
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
