@@ -1,4 +1,7 @@
 RadioDePaulWebsite2::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   namespace :api do
     namespace :v1 do
       resources :awards
@@ -24,8 +27,10 @@ RadioDePaulWebsite2::Application.routes.draw do
 
   if Rails.env == 'production'
     devise_for :people, :controllers => {:registrations => "registrations" }, :path => "/", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+  ActiveAdmin.routes(self)
   else
     devise_for :people, :path => "/", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+  ActiveAdmin.routes(self)
   end
 
   get 'people/become' => 'people#become'

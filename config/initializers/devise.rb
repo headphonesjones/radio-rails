@@ -137,7 +137,7 @@ Devise.setup do |config|
 
   # Defines which key will be used when locking and unlocking an account
   # config.unlock_keys = [ :email ]
-
+  config.secret_key = 'dbb148e382168982987fa279a211a7278a6094074c4e9923ed38ee76bb4b967d7ab2f7ac02df57fdece08547c1207f44c8d9bbf1139369e42133832e7074e316'
   # Defines which strategy will be used to unlock an account.
   # :email = Sends an unlock link to the user email
   # :time  = Re-enables login after a certain amount of time (see :unlock_in below)

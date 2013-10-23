@@ -11,9 +11,12 @@ gem 'rabl'
 gem 'json'
 gem 'garb'
 gem 'cocoon'
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
 
 gem 'unicorn'
 gem 'ransack'
+gem 'nokogiri'
 gem 'foreman'
 
 gem 'haml'
