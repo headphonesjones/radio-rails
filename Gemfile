@@ -12,6 +12,10 @@ gem 'json'
 gem 'garb'
 gem 'cocoon'
 gem 'activeadmin'
+gem 'activeadmin-extra', github: 'stefanoverna/activeadmin-extra'
+gem 'chosen-rails', group: :assets
+
+
 gem "meta_search",    '>= 1.1.0.pre'
 
 gem 'unicorn'

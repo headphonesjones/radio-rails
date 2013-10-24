@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/stefanoverna/activeadmin-extra.git
+  revision: dfd89d02d8de9aa2c478114ad3e05e6ddb87287d
+  specs:
+    activeadmin-extra (0.1.0)
+      activeadmin
+
+GIT
   remote: https://github.com/ryanb/nested_form.git
   revision: 42028bc06e72a848d297edc1467a969a7c9def57
   specs:
@@ -66,6 +73,12 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    chosen-rails (1.0.1)
+      coffee-rails (>= 3.2)
+      compass-rails (>= 1.0)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
+    chunky_png (1.2.8)
     client_side_validations (3.2.6)
     cocoon (1.2.1)
     coffee-rails (3.2.2)
@@ -75,6 +88,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
     devise (3.1.1)
@@ -110,6 +129,7 @@ GEM
       formtastic (~> 2.2)
       railties (>= 3.1.0)
       sass-rails
+    fssm (0.2.10)
     garb (0.9.1)
       activesupport (>= 2.2.0)
       crack (>= 0.1.6)
@@ -257,9 +277,11 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   activeadmin
+  activeadmin-extra!
   acts-as-taggable-on (~> 2.3.1)
   breadcrumbs_on_rails
   carrierwave
+  chosen-rails
   client_side_validations
   cocoon
   coffee-rails (~> 3.2.1)
