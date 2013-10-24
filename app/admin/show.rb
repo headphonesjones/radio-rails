@@ -1,10 +1,4 @@
 ActiveAdmin.register Show do
-  index do
-    column :title
-    column "Hosts", :people do |post|
-      link_to post.title, admin_post_path(post)
-    column :archived
-  end
 
   form do |f|
       f.inputs "Show" do
