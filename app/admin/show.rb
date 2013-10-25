@@ -2,6 +2,16 @@ ActiveAdmin.register Show do
   scope :all
   scope :active, :default => true
   scope :archived
+  
+  config.sort_order = "title_asc"
+
+  index do
+    column "Show" do |show|
+      link_to show.title, admin_show_path(show)
+    end
+    column("Hosts") {|show| show.hosts_formatted}
+    column("Archived") {|show| status_tag((show.archived ? 'yes' : 'no'), (show.archived ? :error : :ok)) }
+  end
 
   form do |f|
       f.inputs "Show" do
