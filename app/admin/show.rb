@@ -3,6 +3,8 @@ ActiveAdmin.register Show do
   scope :active, :default => true
   scope :archived
   
+  filter :title
+  filter :people
   config.sort_order = "title_asc"
 
   index do
