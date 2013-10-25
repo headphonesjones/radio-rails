@@ -1,8 +1,11 @@
 ActiveAdmin.register Show do
+  scope :all
+  scope :active, :default => true
+  scope :archived
 
   form do |f|
       f.inputs "Show" do
-        f.input :title
+        f.input :title, :as => :title
         f.input :short_description
         f.input :long_description
       end

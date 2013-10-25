@@ -1,6 +1,10 @@
 class Show < ActiveRecord::Base
   attr_accessible :title, :short_description, :long_description, :facebook_page_username, :twitter_username, :email, :website_url, :attachments_attributes, :avatar, :remove_avatar, :avatar_cache, :remote_avatar_url, :genre_list, :hostings_attributes
 
+  scope :active, where("shows.archived IS FALSE")
+  scope :archived, where("shows.archived IS TRUE")
+
+
   # relationships
   has_many :hostings, :dependent => :destroy
   has_many :people, :through => :hostings
