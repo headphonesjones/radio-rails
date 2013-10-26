@@ -1,5 +1,6 @@
 ActiveAdmin.register Person do
   config.sort_order = "first_name_asc"
+  
 
   scope :all
   scope :active, :default => true

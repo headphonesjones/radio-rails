@@ -1,4 +1,3 @@
-class Setting < ActiveRecord::Base
-  attr_accessible :value, :var
-  validates :var, :presence => true
+class Setting < RailsSettings::CachedSettings
+  attr_accessible :var
 end

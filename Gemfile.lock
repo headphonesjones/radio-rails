@@ -166,8 +166,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
-    ledermann-rails-settings (2.1.0)
-      activerecord (>= 3.1)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -210,6 +208,8 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails-settings-cached (0.2.4)
+      rails (>= 3.0.0)
     rails3-jquery-autocomplete (1.0.11)
       rails (~> 3.0)
     railties (3.2.11)
@@ -299,7 +299,6 @@ DEPENDENCIES
   jquery-ui-rails
   jquery-ui-themes
   json
-  ledermann-rails-settings
   meta_search (>= 1.1.0.pre)
   mime-types
   mini_magick
@@ -308,6 +307,7 @@ DEPENDENCIES
   pg
   rabl
   rails (= 3.2.11)
+  rails-settings-cached (= 0.2.4)
   rails3-jquery-autocomplete
   ransack
   rdiscount

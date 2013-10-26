@@ -12,6 +12,8 @@ class Show < ActiveRecord::Base
   has_many :attachments, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :hostings, :allow_destroy => true
+  accepts_nested_attributes_for :slots, :allow_destroy => true
+
   acts_as_taggable_on :genres
 
   # callbacks

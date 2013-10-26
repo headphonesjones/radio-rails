@@ -40,7 +40,7 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-datatables-rails'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'rails3-jquery-autocomplete'
-gem 'ledermann-rails-settings', :require => 'rails-settings'
+gem "rails-settings-cached", "0.2.4"
 gem 'jquery-ui-rails'
 gem 'jquery-ui-themes'
 
