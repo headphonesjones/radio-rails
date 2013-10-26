@@ -11,7 +11,10 @@ ActiveAdmin.register Show do
     column "Show" do |show|
       link_to show.title, admin_show_path(show)
     end
-    column("Hosts") {|show| show.hosts_formatted}
+
+    column "Hosts" do |show|
+      raw(show.people.map{|host| link_to host.display_name, admin_person_path(host)}.to_sentence)
+    end
     column("Archived") {|show| status_tag((show.archived ? 'yes' : 'no'), (show.archived ? :error : :ok)) }
   end
 

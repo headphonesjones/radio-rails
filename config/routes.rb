@@ -1,5 +1,6 @@
 RadioDePaulWebsite2::Application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :people, ActiveAdmin::Devise.config
+  root to: "admin/dashboard#index"
   ActiveAdmin.routes(self)
 
   namespace :api do
@@ -26,11 +27,9 @@ RadioDePaulWebsite2::Application.routes.draw do
   resources :award_organizations
 
   if Rails.env == 'production'
-    devise_for :people, :controllers => {:registrations => "registrations" }, :path => "/", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
-  ActiveAdmin.routes(self)
+    ActiveAdmin.routes(self)
   else
-    devise_for :people, :path => "/", :path_names => { :sign_in => 'login', :sign_out => 'logout' }
-  ActiveAdmin.routes(self)
+    ActiveAdmin.routes(self)
   end
 
   get 'people/become' => 'people#become'
@@ -75,21 +74,6 @@ RadioDePaulWebsite2::Application.routes.draw do
     end
   end
 
-  get "api/getSchedule" => "slots#getSchedule", :as => "getSchedule"
-  get "api/getOnAir" => "slots#getOnAir", :as => "getOnAir"
-  get "api/shows/getShow" => "shows#getShow", :as => "getShow"
-  get "api/shows/getList" => "shows#getList", :as => "getList"
-  get "api/shows/getRandom" => "shows#getRandom", :as => "getRandom"
-  get "api/people/getPerson" => "people#getPerson", :as => "getPerson"
-  get "api/people/getList" => "people#getList", :as => "getList"
-  get "api/people/getRandom" => "people#getRandom", :as => "getRandom"
-  get "api/people/getManagers" => "managers#getManagers", :as => "getManagers"
-  get "api/getPodcasts" => "podcasts#getPodcasts", :as => "getPodcasts"
-  get "api/news_posts/getList" => "news_posts#getList", :as => "getList"
-  get "api/news_posts/getPost" => "news_posts#getPost", :as => "getPost"
-  get "api/awards/getList" => "awards#getList"
-  get "api/events/getList" => "events#getList"
-
   resources :managers do
     collection do
       get 'random'
@@ -115,57 +99,10 @@ RadioDePaulWebsite2::Application.routes.draw do
     end
   end
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'pages#welcome'
+#  root :to => 'pages#welcome'
 
   # See how all your routes lay out with "rake routes"
 

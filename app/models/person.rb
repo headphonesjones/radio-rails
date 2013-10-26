@@ -5,6 +5,10 @@ class Person < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
+  scope :active, where("people.archived IS FALSE")
+  scope :archived, where("people.archived IS TRUE")
+
+
   mount_uploader :avatar, AvatarUploader
 
   # Setup accessible (or protected) attributes for your model
