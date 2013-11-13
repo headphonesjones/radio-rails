@@ -15,7 +15,7 @@ ActiveAdmin.register Person do
     end
     column("Shows") {|person| person.shows_formatted}
     #column("Manager") {|person| status_tag((person.admin ? 'yes' : 'no'), (person.archived ? :error : :ok)) }
-    column("Admin") {|person| status_tag((person.admin ? 'yes' : 'no'), (person.archived ? :error : :ok)) }
+    column("Admin") {|person| status_tag((person.admin ? 'yes' : 'no'), (person.admin ? :error : :ok)) }
     column("Archived") {|person| status_tag((person.archived ? 'yes' : 'no'), (person.archived ? :error : :ok)) }
 
   end
