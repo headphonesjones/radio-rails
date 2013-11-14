@@ -1,7 +1,4 @@
 ActiveAdmin.register Show do
-  menu :if => proc{ !current_person.admin? },
-     :label => 'My Shows'
-
   scope_to :current_person, :unless => proc{ current_person.admin? }
 
   scope :all

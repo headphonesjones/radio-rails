@@ -1,5 +1,5 @@
 class Show < ActiveRecord::Base
-  attr_accessible :title, :short_description, :long_description, :facebook_page_username, :twitter_username, :email, :website_url, :attachments_attributes, :avatar, :remove_avatar, :avatar_cache, :remote_avatar_url, :genre_list, :hostings_attributes
+  attr_accessible :title, :short_description, :long_description, :facebook_page_username, :twitter_username, :email, :website_url, :attachments_attributes, :avatar, :remove_avatar, :avatar_cache, :remote_avatar_url, :genre_list, :hostings_attributes, :tag_list, :genres, :genre_ids
 
   scope :active, where("shows.archived IS FALSE")
   scope :archived, where("shows.archived IS TRUE")
@@ -15,6 +15,7 @@ class Show < ActiveRecord::Base
   accepts_nested_attributes_for :slots, :allow_destroy => true
 
   acts_as_taggable_on :genres
+  accepts_nested_attributes_for :genres
 
   # callbacks
   before_save :blanks_to_nils  
