@@ -1,4 +1,7 @@
 ActiveAdmin.register Show do
+  menu :if => proc{ !current_person.admin? },
+     :label => 'My Shows'
+
   scope_to :current_person, :unless => proc{ current_person.admin? }
 
   scope :all
@@ -8,8 +11,13 @@ ActiveAdmin.register Show do
   filter :title
   filter :people
   config.sort_order = "title_asc"
+  if proc{!current_person.admin? }
+    actions :all, :except => [:destroy, :new]
+
+  end
 
   index do
+
     column "Show" do |show|
       link_to show.title, admin_show_path(show)
     end
@@ -28,7 +36,7 @@ ActiveAdmin.register Show do
   show do |show|
     attributes_table do
       row :title
-      row :short_description  
+      row :short_description
       row :long_description 
       row("Genres") { show.genre_list}
     end
@@ -77,14 +85,42 @@ end
   form do |f|
       f.inputs "Show" do
         f.input :title, :as => :title
-        f.input :short_description
-        f.input :long_description
+        f.input :short_description, :label => 'Description'
+        f.input :long_description, :input_html => { :rows => 10 }
       end
-      f.inputs "Social" do
-        f.input :facebook_page_username
-        f.input :twitter_username
+      if current_person.admin?
+        f.inputs "Slots" do
+
+          f.has_many :slots,  :allow_destroy => true, :heading => 'Slots', :new_record => true do |cf|
+            cf.input :quarter
+            cf.input :start_time, :labels => { :minute => " ", :hour => " "}#, :input_html_options => { :class => 'time' }
+            cf.input :end_time, :labels => { :minute => " ", :hour => " "}
+            cf.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
+            cf.inputs "Days", :class =>"days" do
+              cf.input :monday
+              cf.input :tuesday
+              cf.input :wednesday
+              cf.input :thursday
+              cf.input :friday
+              cf.input :saturday
+              cf.input :sunday
+          end 
+          end
+        end
+        end
+
+      if current_person.admin?  
+        f.inputs "Hosts" do
+          f.input :people, as: :chosen
+        end
+      end
+
+
+        f.inputs "Social" do
+        f.input :facebook_page_username, :label => 'Facebook'
+        f.input :twitter_username, :label => 'Twitter'
         f.input :email
-        f.input :website_url
+        f.input :website_url, :label => 'Website'
       end
       f.inputs "Genres" do
         f.input :genres, as: :chosen
@@ -92,23 +128,8 @@ end
       f.inputs "Avatar" do
         f.input :avatar
       end
-      f.inputs "Hosts" do
-      	f.input :people, as: :chosen
-      end
-      f.inputs "Slots" do
-        f.has_many :slots, :allow_destroy => true, :heading => 'Slots', :new_record => true do |cf|
-          cf.input :quarter
-          cf.input :start_time 
-          cf.input :end_time
-          cf.input :monday
-          cf.input :tuesday
-          cf.input :wednesday
-          cf.input :thursday
-          cf.input :friday
-          cf.input :saturday
-          cf.input :sunday
-          cf.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
-        end
-      end
+
+    f.actions
+
     end
 end

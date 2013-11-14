@@ -8,9 +8,49 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/extra/base", "chosen"
+@import "active_admin/extra/base", "chosen";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
-//
 //   .status_tag { background: #6090DB; }
+
+
+.has_many.slots {
+  h3 {
+    display: none;
+  }
+  ol > li{
+    display: inline;
+    float: left;
+  }
+  legend.label label{
+    position: static;
+  }
+  li.string label, li.time_select label {
+    padding: 0;
+    margin: 0;
+    float: none;
+    width: 90%;
+    text-align: left !important;
+  }
+  li.fragment{
+    width: initial;
+  }
+  li.input.boolean{
+    min-width: 110px;
+  }
+  li.input.boolean > label {
+    width: inherit!important;
+  }
+  .days{
+    width: 100%;
+  }
+  .days legend{
+    display:none
+  }
+  input[type='checkbox'] {
+  }
+  fieldset.inputs legend{
+   /* display: none;*/
+  } 
+}
